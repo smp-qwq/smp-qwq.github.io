@@ -698,28 +698,26 @@ body[data-theme="dark"] .stat-label {
   </div>
 </div>
 
-<div class="discussion-section">
-  <h2 class="section-title"><i class="fas fa-comments"></i> 社区讨论</h2>
-  <div class="quick-create">
-    <h3 style="margin-top:0; color: var(--primary-color);"><i class="fas fa-pen"></i> 新建讨论</h3>
-    <input type="text" id="issueTitle" 
-           placeholder="输入讨论标题（必填）" 
-           class="form-input"
-           required>
-    <textarea id="issueBody" 
-              class="form-textarea"
-              placeholder="输入讨论内容（支持Markdown格式）"
-              rows="4"></textarea>
-    <button onclick="createNewIssue()" 
-            class="submit-button">
-      <i class="fas fa-plus-circle"></i> 创建讨论
-    </button>
-  </div>
-  <div id="discussions">
-    <div class="loading-text"><i class="fas fa-spinner"></i> 加载讨论中...</div>
-  </div>
-</div>
+<head>
+  <!-- ... -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@waline/client@v3/dist/waline.css"
+  />
+  <!-- ... -->
+</head>
+<body>
+  <!-- ... -->
+  <div id="waline"></div>
+  <script type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
 
+    init({
+      el: '#waline',
+      serverURL: 'https://talk.smpwebsite.online',
+    });
+  </script>
+</body>
 <section class="disclaimer-section">
   <strong><i class="fas fa-exclamation-circle"></i> 免责声明：</strong>
   本站所有资源均为用户自发上传，不代表本站立场。下载内容仅供学习交流使用，不得用于商业用途。
